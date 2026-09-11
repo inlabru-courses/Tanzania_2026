@@ -1,5 +1,5 @@
 ---
-title: "`inlabru` workshop template"
+title: "`inlabru` workshop Tanzania"
 subtitle: "D/M/Y  • City, Country<br>Jafet Belmont · Sara Martino · Janine Illian"
 title-block-banner: "#00000000"
 title-block-banner-color: "white"
