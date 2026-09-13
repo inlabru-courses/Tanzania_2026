@@ -1,0 +1,582 @@
+/* ══════════════════════════════════════════════════════════════════
+   inlabru Workshop 2026
+   Custom stylesheet — Quarto Bootstrap override
+   Palette:  Teal #1B4F5E · Amber #E8892B · Off-white #F7F5F2
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts import ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── CSS custom properties ───────────────────────────────────────── */
+:root {
+  --wb-teal:        #1B4F5E;
+  --wb-teal-light:  #2A6E84;
+  --wb-teal-pale:   #EFF7FA;
+  --wb-amber:       #E8892B;
+  --wb-amber-light: #FFF3E0;
+  --wb-off-white:   #F7F5F2;
+  --wb-warm-grey:   #7A7570;
+  --wb-dark:        #1A1A1A;
+  --wb-text:        #2C3A40;
+  --wb-uog-gold:    #FFCC00;
+}
+
+
+.leaflet-container {
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.15);
+}
+
+.callout-note {
+  margin-bottom: 1.5rem;
+}
+
+
+/* ── Base typography ─────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--wb-text);
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 700;
+  color: var(--wb-teal);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.55rem; }
+h3 { font-size: 1.25rem; }
+
+/* Amber underline on section headings (h2 used as section titles) */
+h2::after {
+  content: '';
+  display: block;
+  width: 2.8rem;
+  height: 3px;
+  background: var(--wb-amber);
+  border-radius: 2px;
+  margin-top: 0.45rem;
+}
+
+/* ── Navbar ──────────────────────────────────────────────────────── */
+.navbar {
+  background-color: var(--wb-teal) !important;
+  border-bottom: 3px solid var(--wb-amber);
+  padding: 0.6rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
+}
+
+.navbar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Strip the code box on the navbar title (inlabru Workshop) */
+.navbar-brand code,
+.navbar-title code {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: var(--wb-amber) !important;
+  font-weight: 700;
+}
+
+
+.navbar .nav-link {
+  color: rgba(255,255,255,0.82) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem !important;
+  border-radius: 4px;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.12) !important;
+}
+
+.navbar .nav-link.active {
+  border-bottom: 2px solid var(--wb-amber);
+  border-radius: 0;
+}
+
+.navbar-logo {
+  max-height: 100px;
+  margin-right: 0.5rem;
+}
+
+
+
+/* ── Hero banner (title block) ───────────────────────────────────── */
+
+/* ── Hero banner (title block) ───────────────────────────────────── */
+#title-block-header {
+  position: relative;
+  overflow: visible;
+  background-size: cover;
+  background-position: center;
+}
+
+#title-block-header .quarto-title-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;      /* centres each block horizontally */
+  padding: 1.6rem 2.5rem;
+}
+
+#title-block-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(27,79,94,0.72) 0%,
+    rgba(27,79,94,0.45) 60%,
+    rgba(232,137,43,0.18) 100%
+  );
+  z-index: 1;
+}
+
+#title-block-header.quarto-title-block.default .quarto-title-meta,
+#title-block-header .quarto-title,
+#title-block-header .quarto-title-subtitle,
+#title-block-header .quarto-title-meta {
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+/* Title */
+#title-block-header .quarto-title .title {
+  font-size: 3rem !important;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Subtitle (also carries the authors on a second line) */
+#title-block-header .quarto-title-subtitle,
+#title-block-header .subtitle {
+  font-size: 1.4rem !important;
+  line-height: 1.4;
+  text-align: left;
+  width: 100%;
+}
+
+/* Hide the separate AUTHORS metadata block in the banner
+   (keeps author: in YAML usable for PDF/citation without showing twice) */
+#title-block-header .quarto-title-meta {
+  display: none;
+}
+
+/* inlabru code word — strip the box, make it amber */
+#title-block-header .quarto-title .title code,
+#title-block-header code {
+  background: var(--wb-teal) !important;
+  border: none !important;
+  padding: 0 !important;
+  color: var(--wb-uog-gold) !important;
+}
+
+/* ── Per-page banner images (set via body-classes in each .qmd) ──── */
+body.home-page       #title-block-header { background-image: url(Image/banner.png); }
+/* ── Page layout ─────────────────────────────────────────────────── */
+#quarto-content main {
+  padding-top: 2.2rem;
+  padding-bottom: 3rem;
+}
+
+
+/* ── No-banner pages ─────────────────────────────────────────────── */
+/* Add `body-classes: no-banner` to any .qmd that shouldn't have a photo banner */
+body.no-banner #title-block-header {
+  background-image: none;
+  background-color: transparent;
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+body.no-banner #title-block-header::after {
+  display: none;                 /* remove the teal/amber gradient overlay */
+}
+
+body.no-banner #title-block-header .quarto-title-banner {
+  display: block;                /* undo the flex centering */
+  align-items: initial;
+  padding: 0;
+}
+
+body.no-banner #title-block-header .quarto-title .title {
+  color: var(--wb-teal);         /* dark title, since there's no photo behind it */
+  font-size: 2rem !important;    /* normal page-title size, not the 3rem hero size */
+  text-align: left;
+  white-space: normal;
+}
+
+body.no-banner #title-block-header .quarto-title-subtitle,
+body.no-banner #title-block-header .subtitle {
+  color: var(--wb-warm-grey);
+  font-size: 1.1rem !important;
+  text-align: left;
+  width: auto;
+}
+
+
+/* ── Horizontal rules ────────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid rgba(27,79,94,0.15);
+  margin: 1.8rem 0;
+}
+
+/* ── Tables ──────────────────────────────────────────────────────── */
+table {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+}
+
+thead th {
+  background-color: var(--wb-teal) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  letter-spacing: 0.02em;
+  font-size: 0.825rem;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--wb-teal-pale);
+}
+
+tbody tr:hover {
+  background-color: rgba(232,137,43,0.07);
+}
+
+tbody td {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid rgba(27,79,94,0.1);
+  vertical-align: top;
+}
+
+/* first column (time) bold teal */
+tbody td:first-child {
+  font-weight: 600;
+  color: var(--wb-teal);
+  white-space: nowrap;
+  width: 11rem;
+}
+
+/* ── Tab panels (schedule) ───────────────────────────────────────── */
+.panel-tabset .nav-tabs {
+  border-bottom: 2px solid var(--wb-teal);
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.panel-tabset .nav-tabs .nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--wb-teal);
+  border: 1px solid rgba(27,79,94,0.25);
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 0.45rem 1.1rem;
+  background: var(--wb-off-white);
+  transition: background 0.15s, color 0.15s;
+}
+
+.panel-tabset .nav-tabs .nav-link.active,
+.panel-tabset .nav-tabs .nav-link:hover {
+  background: var(--wb-teal);
+  color: #ffffff;
+  border-color: var(--wb-teal);
+}
+
+.panel-tabset .tab-content {
+  border: 1px solid rgba(27,79,94,0.15);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 1.25rem;
+  background: #ffffff;
+}
+
+/* ── Callout blocks ──────────────────────────────────────────────── */
+.callout {
+  border-radius: 6px;
+  border: none !important;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+
+
+/* Give the callout body room at the bottom so webexercises buttons clear the edge */
+.callout .callout-body-container {
+  padding-bottom: 1rem;
+}
+
+.callout-note {
+  background: var(--wb-teal-pale) !important;
+  border-left: 4px solid var(--wb-teal) !important;
+}
+
+.callout-note .callout-title {
+  color: var(--wb-teal) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.callout-warning {
+  background: var(--wb-amber-light) !important;
+  border-left: 4px solid var(--wb-amber) !important;
+}
+
+.callout-warning .callout-title {
+  color: var(--wb-amber) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+
+
+/* ── Venue building cards ─────────────────────────────────────────── */
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 1.6rem;
+}
+
+.venue-card {
+  border: 1px solid rgba(27,79,94,0.15);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  background: var(--wb-teal-pale);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+.venue-card h3 a {
+  text-decoration: none;
+  margin-left: 0.3rem;
+  font-size: 0.9em;
+}
+.venue-card h3 a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+.venue-card p.building {
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  color: var(--wb-dark);
+}
+
+.venue-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.venue-info-link {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--wb-teal);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.venue-info-link:hover {
+  color: var(--wb-amber);
+}
+
+.modal-header {
+  background: var(--wb-teal-pale);
+  border-bottom: 2px solid var(--wb-teal);
+}
+
+.modal-title {
+  color: var(--wb-teal);
+  font-family: 'Playfair Display', serif;
+}
+
+/* ── supplementary placeholder ─────────────────────────────────────── */
+.supplementary {
+  background: var(--wb-off-white);
+  border: 2px dashed rgba(27,79,94,0.25);
+  border-radius: 8px;
+  padding: 1.4rem 1.8rem;
+  color: var(--wb-warm-grey);
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.supplementary p { margin: 0; }
+
+/* ── Programme PDF download button ──────────────────────────────── */
+.pdf-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--wb-amber);
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1.3rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: background 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 2px 8px rgba(232,137,43,0.35);
+  margin-bottom: 1.5rem;
+}
+
+.pdf-download-btn:hover {
+  background: #cf7620;
+  box-shadow: 0 4px 14px rgba(232,137,43,0.45);
+}
+
+.pdf-download-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ── Speaker image grid ──────────────────────────────────────────── */
+div[data-layout-ncol="3"] img,
+.quarto-layout-panel img {
+  border-radius: 50%;
+  border: 3px solid var(--wb-teal-pale);
+  object-fit: cover;
+  transition: border-color 0.18s;
+}
+
+div[data-layout-ncol="3"] img:hover,
+.quarto-layout-panel img:hover {
+  border-color: var(--wb-amber);
+}
+
+div[data-layout-ncol="3"] .quarto-figure figcaption,
+.quarto-layout-panel figcaption {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--wb-teal);
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+/* ── Important dates / registration columns ──────────────────────── */
+.columns .column {
+  background: var(--wb-off-white);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.columns .column p {
+  margin-bottom: 0.3rem;
+}
+
+/* ── Links ───────────────────────────────────────────────────────── */
+a {
+  color: var(--wb-teal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--wb-amber);
+  text-decoration: underline;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────── */
+.nav-footer {
+  background: var(--wb-teal) !important;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  border-top: 3px solid var(--wb-amber);
+  padding: 0.8rem 1.5rem;
+}
+
+.nav-footer a {
+  color: rgba(255,255,255,0.8);
+}
+
+.nav-footer a:hover {
+  color: var(--wb-amber);
+}
+
+/* ── Responsive tweaks ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hotel-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  #title-block-header { min-height: 160px; }
+  tbody td:first-child { width: 7rem; }
+  .columns > .column { margin-bottom: 0.75rem; }
+
+  /* allow the banner title to wrap again on narrow screens */
+ #title-block-header .quarto-title .title {
+  white-space: normal;
+  font-size: 2rem !important;
+}
+}
+
+
+
+
+@media (max-width: 480px) {
+  .hotel-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── Single-box two-column info panel ────────────────────────────── */
+.info-box {
+  background: var(--wb-off-white);
+  border-radius: 8px;
+  padding: 1.4rem 1.6rem;
+  margin: 1rem 0 1.6rem;
+}
+
+.info-box .columns {
+  margin: 0;
+}
+
+.info-box .column {
+  background: none !important;  /* override the global .columns .column background */
+  padding: 0.4rem 1rem;
+  margin-bottom: 0;
+}
+
+.info-box h4, .info-box .section-label {
+  color: var(--wb-teal-light, #467F9C);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>inlabru workshop Tanzania – `inlabru` workshop</title>
+<title>Spatio-temporal models with inlabru – `inlabru` workshop</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -88,6 +88,35 @@ background: #00000000;
       }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="styles.css">
@@ -233,8 +262,8 @@ background: #00000000;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title"><code>inlabru</code> workshop Tanzania</h1>
-            <p class="subtitle lead">D/M/Y • City, Country<br>Jafet Belmont · Sara Martino · Janine Illian</p>
+      <h1 class="title">Spatio-temporal models with <code>inlabru</code></h1>
+            <p class="subtitle lead">15–18 September 2026 • Dodoma, Tanzania<br>Jafet Belmont · Sara Martino · Janine Illian</p>
                       </div>
   </div>
     
@@ -276,8 +305,8 @@ background: #00000000;
 <section id="welcome-to-the-course" class="level1">
 <h1>Welcome to the course!</h1>
 <ul>
-<li>Welcome to the <code>inlabru</code> workshop!</li>
-<li>The aim of this workshop is to . . .</li>
+<li>Welcome to the <code>inlabru</code> workshop in Pamplona!</li>
+<li>The aim of this workshop is to introduce you to a range of statistical modelling approaches, and how temporal, spatial and spatio-temporal models can be fitted using the <code>inlabru</code> package.</li>
 <li>Workshop materials are available in the github repository</li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -298,10 +327,10 @@ background: #00000000;
 <h1>Learning Objectives for the workshop</h1>
 <p>At the end of the workshop, participants will have an understanding of:</p>
 <ul>
-<li>ILO1</li>
-<li>ILO2</li>
-<li>ILO3</li>
-<li>ILO4</li>
+<li>the motivation for and the challenges of analysing and modelling spatial data</li>
+<li>statistical models used to analyse spatial and spatio-temporal data</li>
+<li>the implementation of these models in the <code>inlabru</code> package</li>
+<li>how to independently analyse spatial data with <code>inlabru</code></li>
 </ul>
 </section>
 <section id="intended-audience" class="level1">
@@ -316,7 +345,7 @@ background: #00000000;
 <section id="schedule-tabs" class="level1">
 <h1>Schedule</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Day 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Day 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Day 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Day 4</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Monday 19<span class="math inline">\(^{th}\)</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Tuesday 20<span class="math inline">\(^{th}\)</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Wednesday 21<span class="math inline">\(^{st}\)</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Thursday 22<span class="math inline">\(^{nd}\)</span></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <table class="table-striped table-hover caption-top table">
@@ -512,24 +541,25 @@ background: #00000000;
       </div>
       <div class="modal-body">
         <pre><code class="language-bibtex">@Manual{Belmont2026inlabru,
-  title  = {inlabruCourseMONTH2026: Course Materials for CITY inlabru Course 1-4 MONTH 2026},
+  title  = {inlabruCourseMarch2026: Course Materials for Pamplona inlabru Course 19-22 October 2026},
   author = {Belmont, Jafet and Martino, Sara and Illian, Janine},
   year   = {2026},
-  url    = {https://inlabru-courses.github.io/}
+  url    = {https://inlabru-courses.github.io/Pamplona2026/}
 }</code></pre>
       </div>
     </div>
   </div>
 </div>
+
 <button type="button" class="venue-info-link" data-bs-toggle="modal" data-bs-target="#cite-info">
 <div class="venue-card">
-<p>Belmont J., Martino S., Illian, J. F (2026). <em>inlabru Course MONTH 2026: Course Materials for CITY inlabru 1-4 MONTH 2026</em>. https://inlabru-courses.github.io/</p>
+<p>Belmont J., Martino S., Illian, J. F (2026). <em>inlabru Course October 2026: Course Materials for Pamplona inlabru 19-22 October 2026</em>. https://inlabru-courses.github.io/Pamplona2026/</p>
 </div>
 </button>
 </section>
 <section id="sec-contact" class="level1">
 <h1>Contact</h1>
-<p><strong>UPDATE with git-specific discussion forum</strong> Questions about the workshop? Join the discussion on <a href="https://inlabru-courses.github.io/">GitHub Discussions space</a></p>
+<p>Questions about the workshop? Join the discussion on <a href="https://github.com/inlabru-courses/Pamplona2026/discussions">GitHub Discussions space</a></p>
 
 
 </section>
