@@ -128,7 +128,7 @@ Standard models assume independent observations
 
 -   Spatial data are often not independent
 
--   Two nearby observations are similar $\rightarrow$ not providing independent info
+-   Two nearby observations are similar $\rightarrow$ not providing independent information
 
 ::: fragment
 $\rightarrow$ spuriously tight confidence intervals
@@ -146,7 +146,7 @@ Spatial models include special components to explicitly model dependence.
 ::: {style="font-size: 0.85em;"}
 -   Inference and prediction are essential in statistics, but spatial dependency can complicate statistical analysis.
 
--   Understanding how spatial dependence structures impact our analyses is crucial to address many practical problems.
+-   Understanding how spatial dependence structures impact on our analyses is crucial.
 
 -   Spatial dependence may be caused by:
 
@@ -164,14 +164,14 @@ Dependence relationships need to represented in the model –- which observation
 
 ::: incremental
 -   usually represented by a matrix
--   some matrix operations (e.g. inversion) are computationally expensive
+-   some matrix operations (e.g.\ inversion) are computationally expensive
 -   in the past: often MCMC ⇝ very slow
--   INLA (and hence `inlabru`) much faster..
+-   INLA (and hence `inlabru`) much faster...
 :::
 
 ## Spatial modelling
 
-The overall goal of any piece of spatial analysis is to understand the spatial patterns in our data. This could involve:
+The overall goal of any piece of spatial analysis is to understand the spatial patterns in the data. This could involve:
 
 ::: incremental
 -   Estimating differences in mean, variance, or some other summary statistic across space.
@@ -297,7 +297,7 @@ We can distinguish three types of spatial data structures
 ::: {.column width="60%"}
 **Point pattern data**
 
-In point pattern data we record the locations where events occur (e.g. trees in a forest, earthquakes) and the coordinates of such occurrences are our data.
+In point pattern data we record the locations where events occur (e.g.\ trees in a forest, earthquakes) and the coordinates of such occurrences are our data.
 
 ![Occurrence records of four ungulate species in Tibet,](figures/10980_2021_1202_Fig1_HTML.png){fig-align="center" width="421"}
 :::
@@ -395,7 +395,7 @@ First, we will cover some of the basics of working `sf` and `terra` objects.
 
 Modern, efficient framework for working with spatial data.
 
-Our spatial analysis begins with **how the data is stored**:
+Our spatial analysis begins with **how the data are stored**:
 
 ::: incremental
 -   **`sf`** (Simple Features ) package → *vector* data. Discrete features with exact coordinates: **points** (a survey location), **lines** (a transect), **polygons** (a health board, a national park).
@@ -433,14 +433,14 @@ Most `Tidyverse`/`dplyr` verbs (e.g., `filter`, `mutate`,`summarise`, `%>%`) wor
 A **Coordinate Reference System** tells R *what your coordinates mean* — degrees of latitude/longitude, or metres on a projected grid. E.g.,
 
 -   **EPSG:4326** — raw longitude/latitude (WGS84), in degrees
--   **UTM zones** (e.g. EPSG:32609, 27700) — projected, in **metres**, better for measuring distance and area
+-   **UTM zones** (e.g.\ EPSG:32609, 27700) — projected, in **metres**, better for measuring distance and area
 
 1.  Layers you overlay **must share the same CRS** — reproject using `st_transform()`
 2.  Switching units from metres to kilometres makes areas and distances easier to read and interpret.
 
 :::: fragment
 ::: callout-important
-When your spatial data carry a CRS, `inlabru` uses it directly — so make sure every layer in your model shares a **consistent and appropriate CRS** before you fit. Mismatched coordinate systems are one of the most common sources of error.
+When your spatial data carry a CRS, `inlabru` uses it directly — so make sure all layers in your data share a **consistent and appropriate CRS** before you fit. Mismatched coordinate systems are one of the most common sources of error.
 :::
 ::::
 :::::
@@ -453,7 +453,7 @@ Rasters are a convenient way to represents spatially continuous phenomena by div
 The `terra` package is a modern and powerful tool for efficiently working with raster data.
 
 ::: fragment
-Some useful function are:
+Some useful functions are:
 
 -   `rast()` — read a raster file (`.tif` or `.tiff`) **or** build one from an x-y-z data frame
 -   `crs()` — assign or match a coordinate system
@@ -537,7 +537,7 @@ $$ SMR_i = \dfrac{Y_i}{E_i} $$
 
 ::: incremental
 -   SMRs may be misleading in counties with small populations.
--   model-based approaches enable to incorporate covariates and borrow information from neighbouring counties to improve local estimates
+-   model-based approaches enable us to incorporate covariates and borrow information from neighbouring counties to improve local estimates
 :::
 ::::
 :::::
