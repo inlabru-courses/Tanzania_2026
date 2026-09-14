@@ -17,9 +17,9 @@ editor_options:
 
 # Welcome to the course!
 
--   Welcome to the `inlabru` workshop in Pamplona!
+-   Welcome to the `inlabru` workshop in Dodoma!
 -   The aim of this workshop is to introduce you to a range of statistical modelling approaches, and how temporal, spatial and spatio-temporal models can be fitted using  the `inlabru` package.
--   Workshop materials are available in the github repository
+-   Workshop materials are available in the github repository.
 
 ::: {.callout-warning}
 ##  Important! ⚠️
@@ -52,7 +52,7 @@ No knowledge of `R-INLA` or `inlabru` is required.
 
 
 ::: panel-tabset
-### Monday 19$^{th}$ 
+### Tuesday 15$^{th}$ 
 
 : {.striped .hover}
 
@@ -70,56 +70,46 @@ No knowledge of `R-INLA` or `inlabru` is required.
 | 15:45  - 17:00 | [**Session 3**: Time Series Models](slides/slides_3.html)|
 
 
-### Tuesday 20$^{th}$ 
+### Wednesday 16$^{th}$ 
 
 : {.striped .hover}
 
 
 | Time | Topic |
 |:----------------------------------:|:----------------------------------:|
-| 9:00 - 10:00  | [**Session 3 cont.**: Time Series Models](slides/slides_3.html) |
-| 10:00 - 11:30 | [Practical Session 3](day2_practical_3.html) |
-| 11:30 - 12:00 | Coffee break ☕ |
-| 12:00 - 13:00 | [**Session 4**: Introduction to Spatial Statistics](slides/slides_intro_spatial.html) |
+| 9:00 - 10:30 | [Practical Session 3](day2_practical_3.html) |
+| 10:30 - 11:00 | Coffee break ☕ |
+| 11:00 - 12:00 | [**Session 4**: Introduction to Spatial Statistics](slides/slides_intro_spatial.html) |
+| 12:00 - 13:00 |  [Practical Session 4](day2_practical_4.html) |
 | 13:00 - 14:30 | Lunch 🍽️ |
-| 14:30 - 15:30 |  [Practical Session 4](day2_practical_4.html) |
-| 15:30 - 15:45 | Coffee break ☕ |
-| 15:45 - 17:00 | [**Session 5**: Areal processes](slides/slides_areal.html) |
 
+###	Thursday 17$^{th}$
 
-###	Wednesday 21$^{st}$
+: {.striped .hover}
+
+| Time | Topic |
+|:----------------------------------:|:----------------------------------:|
+| 11:00 - 12:00 | [**Session 5**: Areal processes](slides/slides_areal.html) |
+| 12:00 - 1:00 |  [**Session 6**: Geostatistics](slides/slides_geostats.html) |
+| 13:00 - 14:30 | Lunch 🍽️ |
+| 14:30 - 15:50 | [**Session 7**: Point Processes](slides/slides_points.html) |
+| 15:30 - 17:00 |  [Practical Session 5](day3_practical_5.html)| |
+
+### Friday 18$^{nd}$
 
 : {.striped .hover}
 
 
 | Time | Topic |
 |:----------------------------------:|:----------------------------------:|
-| 09:00 - 10:00 |  [**Session 6**: Geostatistics](slides/slides_geostats.html) |
-| 10:00 - 11:30 |  [Practical Session 5](day3_practical_5.html) |
-| 11:30 - 12:00 | Coffee break ☕ |
-| 12:00 - 13:00 | [**Session 7**: Point Processes](slides/slides_points.html) |
+| 09:00 - 10:00 | [**Session 8**: Spatiotemporal models](slides/slides_spatioTemporal.qmd)  |
+| 10:00 - 11:00 |  [**Session 9**: Model comparison and evaluation](slides/slides_Model_Comparison.qmd) |
+| 11:00 - 12:00 | Coffee break ☕ |
+| 12:00 - 13:00 |  [Practical Session 6](day4_practical_6.qmd) |
 | 13:00 - 14:30 | Lunch 🍽️ |
-| 14:30 - 15:30 |  [Practical Session 5 (cont.)](day3_practical_5.html)| |
-| 15:30- 15:45  | Coffee break ☕ |
-| 15:45 - 17:00 | [**Session 8**: Spatiotemporal models](slides/slides_spatioTemporal.qmd)  |
-
-
-
-
-### Thursday 22$^{nd}$
-
-: {.striped .hover}
-
-
-| Time | Topic |
-|:----------------------------------:|:----------------------------------:|
-| 09:00 - 10:00 |  [**Session 9**: Model comparison and evaluation](slides/slides_Model_Comparison.qmd) |
-| 10:00 - 11:30 |  [Practical Session 6](day4_practical_6.qmd) |
-| 11:30 - 12:00 | Coffee break ☕ |
-| 12:00 - 13:00 | [**Session 10**: Multi-likelihood/joint likelihood models](slides/slides_multilik.html)  |
-| 13:00 - 14:30 | Lunch 🍽️ |
-| 14:30 - 15:30 | [Closing session](slides/slides_Closing_Remarks.html) and discussion|
-| 15:30- 17:00  | [Practical Session 7 &  General practice](day4_practical_7.qmd) |
+| 14:40 - 15:30 | [**Session 10**: Multi-likelihood/joint likelihood models](slides/slides_multilik.html)  |
+| 15:30 - 16:00 | [Closing session](slides/slides_Closing_Remarks.html) and discussion|
+| 16:00- 17:00  | [Practical Session 7 &  General practice](day4_practical_7.qmd) |
 
 
 :::
