@@ -522,7 +522,7 @@ par(mfrow=c(1,1))
 -   Locations of objects/events in space (typically 2D)
 -   Examples: tree locations, animal groups, earthquakes
 
-**Observed response(s)**: x,y coordinates (sometimes also additional measurements,; "*marks*") modelled by a random variable, a spatial point process characterised by intensity $\lambda(s) \in \mathbb{R}$
+**Observed response(s)**: x,y coordinates (sometimes also additional measurements; "*marks*") modelled by a random variable, a spatial point process characterised by intensity $\lambda(s) \in \mathbb{R}^2$
 
 **here**: intensity is a Gaussian random field; approximated by a continuously indexed Gauss Markov random field
 
