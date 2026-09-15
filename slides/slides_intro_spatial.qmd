@@ -363,116 +363,6 @@ In point pattern data we record the locations where events occur (e.g.\ trees in
 
 <!-- ![](figures/ecol_fall.png){fig-align="center"} -->
 
-## Spatial Data and `inlabru` {.smaller}
-
-`inlabru` provides support for `sf` (Pebesma, 2018) and `terra` (Hijmans, 2024) spatial data structures.
-
--   `sf` and `terra` objects can be passed as data and covariates directly to `bru_obs()` and `bru()` functions.
-
-:::: fragment
-In this course we will
-
-::: incremental
--   Understand how `eval_spatial()` methods are used to extract information from spatial data objects.
-
--   Define model components based on spatial information provided in the geometry column of the `sf` data objects.
-
--   Learn about the `bru_mapper()` mapper system for specifying SPDE random effect.
-
--   Use Spatial objects for prediction using `predict()` and `generate()`.
-
--   Fit log-Gaussian Cox process using (i) `sf` points object to describe the locations of the observed points and (ii) `sf` polygon object to define the observation window
-:::
-::::
-
-::: fragment
-First, we will cover some of the basics of working `sf` and `terra` objects.
-:::
-
-# A very short overview of `sf` and `terra`
-
-## Why these two packages?
-
-Modern, efficient framework for working with spatial data.
-
-Our spatial analysis begins with **how the data are stored**:
-
-::: incremental
--   **`sf`** (Simple Features ) package → *vector* data. Discrete features with exact coordinates: **points** (a survey location), **lines** (a transect), **polygons** (a health board, a national park).
-
--   It can also be used to read vector data stored as a shapefiles.
-
--   **`terra`** → *raster* data. A continuous surface(s) split into a regular grid, each holding a value: elevation, sea depth, temperature.
-:::
-
-## `sf`: vector data as a data frame
-
-The key idea: an `sf` object **is** a data frame — with one extra `geometry` column.
-
-Three functions do most of the work:
-
--   `st_read()` — read a shapefile (`.shp`) from disk
--   `st_as_sf()` — turn a data frame of coordinates into spatial points
--   `st_transform()` — reproject to a different coordinate system
-
-``` r
-my_sf <- st_as_sf(my_df, coords = c("lon", "lat"), crs = 4326)
-```
-
-Plot it by adding `geom_sf()` layer to a `ggplot()` object.
-
-## `sf`: vector data as a data frame
-
-Most `Tidyverse`/`dplyr` verbs (e.g., `filter`, `mutate`,`summarise`, `%>%`) work with `sf` object, providing a seamless bridge between data manipulation and statistical analysis.
-
-![](figures/dataset_verbs.png){fig-align="center" width="582"}
-
-## Coordinate Reference System
-
-::::: {style="font-size: 0.85em;"}
-A **Coordinate Reference System** tells R *what your coordinates mean* — degrees of latitude/longitude, or metres on a projected grid. E.g.,
-
--   **EPSG:4326** — raw longitude/latitude (WGS84), in degrees
--   **UTM zones** (e.g.\ EPSG:32609, 27700) — projected, in **metres**, better for measuring distance and area
-
-1.  Layers you overlay **must share the same CRS** — reproject using `st_transform()`
-2.  Switching units from metres to kilometres makes areas and distances easier to read and interpret.
-
-:::: fragment
-::: callout-important
-When your spatial data carry a CRS, `inlabru` uses it directly — so make sure all layers in your data share a **consistent and appropriate CRS** before you fit. Mismatched coordinate systems are one of the most common sources of error.
-:::
-::::
-:::::
-
-## `terra`: raster data
-
-:::::: {style="font-size: 0.8em;"}
-Rasters are a convenient way to represents spatially continuous phenomena by dividing a region into a grid of equally-sized cells, each storing a value for the variable of interest
-
-The `terra` package is a modern and powerful tool for efficiently working with raster data.
-
-::: fragment
-Some useful functions are:
-
--   `rast()` — read a raster file (`.tif` or `.tiff`) **or** build one from an x-y-z data frame
--   `crs()` — assign or match a coordinate system
--   `crop()` — clip a raster to a region of interest
--   `ext()` - get the spatial extension
--   `extend()`- Enlarge the spatial extent of a raster
-:::
-
-::: fragment
-``` r
-raster_data <- rast(qcs_grid, type = "xyz")
-crs(raster_data) <- crs(sf_object)   # match the vector layer
-```
-:::
-
-::: fragment
-To plot a raster in `ggplot`, the `tidyterra` package adds `geom_spatraster()` — so raster and `sf` layers stack on the same figure.
-:::
-::::::
 
 ## Discrete space: areal data {.smaller}
 
@@ -652,6 +542,118 @@ citizen science records of the ringlet butterfly in Scotland’s Cairngorms Nati
 ![](images/clipboard-4048445443.png)
 :::
 :::::
+
+## Spatial Data and `inlabru` {.smaller}
+
+`inlabru` provides support for `sf` (Pebesma, 2018) and `terra` (Hijmans, 2024) spatial data structures.
+
+-   `sf` and `terra` objects can be passed as data and covariates directly to `bru_obs()` and `bru()` functions.
+
+:::: fragment
+In this course we will
+
+::: incremental
+-   Understand how `eval_spatial()` methods are used to extract information from spatial data objects.
+
+-   Define model components based on spatial information provided in the geometry column of the `sf` data objects.
+
+-   Learn about the `bru_mapper()` mapper system for specifying SPDE random effect.
+
+-   Use Spatial objects for prediction using `predict()` and `generate()`.
+
+-   Fit log-Gaussian Cox process using (i) `sf` points object to describe the locations of the observed points and (ii) `sf` polygon object to define the observation window
+:::
+::::
+
+::: fragment
+First, we will cover some of the basics of working `sf` and `terra` objects.
+:::
+
+# A very short overview of `sf` and `terra`
+
+## Why these two packages?
+
+Modern, efficient framework for working with spatial data.
+
+Our spatial analysis begins with **how the data are stored**:
+
+::: incremental
+-   **`sf`** (Simple Features ) package → *vector* data. Discrete features with exact coordinates: **points** (a survey location), **lines** (a transect), **polygons** (a health board, a national park).
+
+-   It can also be used to read vector data stored as a shapefiles.
+
+-   **`terra`** → *raster* data. A continuous surface(s) split into a regular grid, each holding a value: elevation, sea depth, temperature.
+:::
+
+## `sf`: vector data as a data frame
+
+The key idea: an `sf` object **is** a data frame — with one extra `geometry` column.
+
+Three functions do most of the work:
+
+-   `st_read()` — read a shapefile (`.shp`) from disk
+-   `st_as_sf()` — turn a data frame of coordinates into spatial points
+-   `st_transform()` — reproject to a different coordinate system
+
+``` r
+my_sf <- st_as_sf(my_df, coords = c("lon", "lat"), crs = 4326)
+```
+
+Plot it by adding `geom_sf()` layer to a `ggplot()` object.
+
+## `sf`: vector data as a data frame
+
+Most `Tidyverse`/`dplyr` verbs (e.g., `filter`, `mutate`,`summarise`, `%>%`) work with `sf` object, providing a seamless bridge between data manipulation and statistical analysis.
+
+![](figures/dataset_verbs.png){fig-align="center" width="582"}
+
+## Coordinate Reference System
+
+::::: {style="font-size: 0.85em;"}
+A **Coordinate Reference System** tells R *what your coordinates mean* — degrees of latitude/longitude, or metres on a projected grid. E.g.,
+
+-   **EPSG:4326** — raw longitude/latitude (WGS84), in degrees
+-   **UTM zones** (e.g.\ EPSG:32609, 27700) — projected, in **metres**, better for measuring distance and area
+
+1.  Layers you overlay **must share the same CRS** — reproject using `st_transform()`
+2.  Switching units from metres to kilometres makes areas and distances easier to read and interpret.
+
+:::: fragment
+::: callout-important
+When your spatial data carry a CRS, `inlabru` uses it directly — so make sure all layers in your data share a **consistent and appropriate CRS** before you fit. Mismatched coordinate systems are one of the most common sources of error.
+:::
+::::
+:::::
+
+## `terra`: raster data
+
+:::::: {style="font-size: 0.8em;"}
+Rasters are a convenient way to represents spatially continuous phenomena by dividing a region into a grid of equally-sized cells, each storing a value for the variable of interest
+
+The `terra` package is a modern and powerful tool for efficiently working with raster data.
+
+::: fragment
+Some useful functions are:
+
+-   `rast()` — read a raster file (`.tif` or `.tiff`) **or** build one from an x-y-z data frame
+-   `crs()` — assign or match a coordinate system
+-   `crop()` — clip a raster to a region of interest
+-   `ext()` - get the spatial extension
+-   `extend()`- Enlarge the spatial extent of a raster
+:::
+
+::: fragment
+``` r
+raster_data <- rast(qcs_grid, type = "xyz")
+crs(raster_data) <- crs(sf_object)   # match the vector layer
+```
+:::
+
+::: fragment
+To plot a raster in `ggplot`, the `tidyterra` package adds `geom_spatraster()` — so raster and `sf` layers stack on the same figure.
+:::
+::::::
+
 
 ## Take Home message
 
