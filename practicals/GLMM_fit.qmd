@@ -70,12 +70,12 @@ In this practical we are going to analyse the dataset `grouseticks`  contained  
 
 
 
-The data contains the number of ticks on the heads of red grouse chicks sampled in the field. See `?grouseticks` for details. 
+The data contain the number of ticks on the heads of red grouse chicks sampled in the field. See `?grouseticks` for details. 
 
 
 The data are analysed in the paper 
 
-Elston et al. "Analysis of aggregation, a worked example: numbers of ticks on red grouse chicks." Parasitology
+Elston et al.\ "Analysis of aggregation, a worked example: numbers of ticks on red grouse chicks." Parasitology (2001)
 
 and in this practical we will follow their analysis.
 
@@ -104,7 +104,7 @@ where $e_{jk}\sim\mathcal{N}(0,\tau^{-1}_e)$ and $\epsilon_{jk}\sim\mathcal{N}(0
 
 We first fit the model using the default priors for fixed and random effects.
 
-To fit the model we first have to create two more variable, one that indexes the combination $jk$ of brood and year and another that indexes the combination $ijk$ of individuals per brood per year.
+To fit the model we first have to create two more variables, one that indexes the combination $jk$ of brood and year and another that indexes the combination $ijk$ of individuals per brood per year.
 
 ```{r}
 grouseticks  = grouseticks %>%
@@ -115,13 +115,13 @@ grouseticks  = grouseticks %>%
 
 ```
 
-now we can fit the model.
+Now we can fit the model.
 
 
 ::: {.callout-warning icon="false"}
 ## {{< bi pencil-square color=#c8793c >}} Task
 
-Complete the code to fit the model in @eq-linpred. You need to define the components, the likelihood and finaly use the `bru()` function to get the results
+Complete the code to fit the model in @eq-linpred. You need to define the components, the likelihood and then use the `bru()` function to get the results
 
 ```{r}
 #| echo: true

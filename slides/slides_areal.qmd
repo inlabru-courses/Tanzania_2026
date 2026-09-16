@@ -274,8 +274,8 @@ $$
 
 2.  Force the *precision* matrix $\mathbf{Q} = \Sigma^{-1}$ to be sparse
 
-    -   What does $Q_{ij}$ represents?
-    -   What does a sparse precision matrix implies?
+    -   What does $Q_{ij}$ represent?
+    -   What does a sparse precision matrix imply?
     
     
 # Gaussian Markov Random Fields  {background-image="figures/areal_img.jpg"}
@@ -450,32 +450,32 @@ GMRFs are key to the many inferential approaches:
 -   other data structures can be approximated by a GMRF in a clever way
 :::
 
-## Formal definition of a GMRF 
+<!-- ## Formal definition of a GMRF  -->
 
-::::: {style="font-size: 0.85em;"}
-Let $\mathbf{u}$ be a GMRF wrt $\mathcal{G} = (\mathcal{V},\mathcal{E})$).
+<!-- ::::: {style="font-size: 0.85em;"} -->
+<!-- Let $\mathbf{u}$ be a GMRF wrt $\mathcal{G} = (\mathcal{V},\mathcal{E})$). -->
 
-$\mathcal{V}$ Vertices: $1,2,\ldots,n$. $\mathcal{E}$ Edges $\{i,j\}$
+<!-- $\mathcal{V}$ Vertices: $1,2,\ldots,n$. $\mathcal{E}$ Edges $\{i,j\}$ -->
 
--   No edge between $i$ and $j$ if $u_i \perp u_j \mid \mathbf{u}_{ij}.$
+<!-- -   No edge between $i$ and $j$ if $u_i \perp u_j \mid \mathbf{u}_{ij}.$ -->
 
--   An edge between $i$ and $j$ if $u_i \not\perp u_j \mid \mathbf{u}_{ij}.$
+<!-- -   An edge between $i$ and $j$ if $u_i \not\perp u_j \mid \mathbf{u}_{ij}.$ -->
 
-*Key point: A graph defines the sparsity structure of Q*
+<!-- *Key point: A graph defines the sparsity structure of Q* -->
 
-::::: 
+<!-- :::::  -->
 
-::: {.callout-note icon="false"}
-## Definition
+<!-- ::: {.callout-note icon="false"} -->
+<!-- ## Definition -->
 
-A random variable $\mathbf{u}$ is said to be a GMRF wrt.\ to the graph $\mathcal{G}$ with vertices $\{1, 2,\dots , n\}$ and edges $\mathcal{E}$, with mean $\mu$ and precision matrix $\mathbf{Q}$ if its probability distribution is given by
+<!-- A random variable $\mathbf{u}$ is said to be a GMRF wrt.\ to the graph $\mathcal{G}$ with vertices $\{1, 2,\dots , n\}$ and edges $\mathcal{E}$, with mean $\mu$ and precision matrix $\mathbf{Q}$ if its probability distribution is given by -->
 
-$$
-\mathbf{u} \sim N(\mu,Q^{-1})
-$$ and
+<!-- $$ -->
+<!-- \mathbf{u} \sim N(\mu,Q^{-1}) -->
+<!-- $$ and -->
 
-$Q_{ij} \neq 0\Longleftrightarrow \{i,j\}\in\mathcal{E} ~~\forall~~i\neq j$
-:::
+<!-- $Q_{ij} \neq 0\Longleftrightarrow \{i,j\}\in\mathcal{E} ~~\forall~~i\neq j$ -->
+<!-- ::: -->
 
 
 ## Modelling spatial similarity {.smaller}
@@ -496,7 +496,7 @@ $$
 
 -   $d_i$ is the number of neighbours
 
--   The mean of $u_i$ is equivalent to the mean of the effects over all neighbours, and the precision is proportional to the number of neighbours (e.g., if an area has many neighbors then its variance will be smaller)
+-   The mean of $u_i$ is equivalent to the mean of the effects over all neighbours, and the precision is proportional to the number of neighbours (e.g., if an area has many neighbours then its variance will be smaller)
 :::
 
 ## Modelling spatial similarity {.smaller}
@@ -1021,7 +1021,9 @@ pred = predict(fit, resp_cases,
 
 In the original BYM, the spatially structured component must be scaled so that $\tau_u$ produces consistent smoothness across different neighborhood structures.
 
-Simpson *et al*. ([2017](https://projecteuclid.org/journals/statistical-science/volume-32/issue-1/Penalising-Model-Component-Complexity--A-Principled-Practical-Approach-to/10.1214/16-STS576.full)) proposed a new parametrization of the BYM model that improves parameter interpretability.
+Riebler *et al*. ([2016](https://journals.sagepub.com/doi/10.1177/0962280216660421)) proposed a new parametrization of the BYM model based on PC-priors that improves parameter interpretability.
+
+<!-- Simpson *et al*. ([2017](https://projecteuclid.org/journals/statistical-science/volume-32/issue-1/Penalising-Model-Component-Complexity--A-Principled-Practical-Approach-to/10.1214/16-STS576.full)) proposed a new parametrization of the BYM model that improves parameter interpretability. -->
 
 $$
     \mathbf{b} = \dfrac{1}{\sqrt{\tau_b}} \left(\sqrt{1-\phi}v^*+\sqrt{\phi}u^*\right).
