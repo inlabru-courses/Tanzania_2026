@@ -42,7 +42,7 @@ website:
         href: slides/welcome.qmd
       - text: Slides 1 - Introduction
         href: slides/slides_1.qmd
-      - text: Slides 2 - The inlabru worflow
+      - text: Slides 2 - The inlabru workflow
         href: slides/slides_2.qmd
       - text: Slides 3 - Temporal Models
         href: slides/slides_3.qmd
